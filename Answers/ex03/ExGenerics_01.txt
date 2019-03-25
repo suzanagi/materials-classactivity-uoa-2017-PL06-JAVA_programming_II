@@ -1,0 +1,11 @@
+First, the reason of this code give us the warning message is that it using ArrayList on raw type. ArrayList is the generic type class, so it should be parameterized like ArrayList<Integer> or ArrayList<String>.
+
+Let's see the process of this code.
+First, it declare and initialize the variable num_list as a ArrayList on raw type(It doesn't give parameter that define the type).
+After that, in the init() method, it adds the String "1200" as a first element of this num_list. So the num_list automatically decides the type of itself to String. However, in the next line, it tries to add new Point object to the num_list although its type is settled as String. Then it occurs an error, and that's why it doesn't work correctly. Also, the next line that adds the integer object 1300 to the num_list is the other reason of this exception.
+
+Actually, if I comment out the line "num_list.add(new Point(300, 100));" and "num_list(1300);", this execution works normally.
+
+Hence, to make this program works correctly, what we need to do are
+1. Give a parameter to the ArrayList object when it declares the instance num_list.
+2. Integrate the type of object that added to num_list: don't add any object except the given type to the Arraylist. For example, if we don't add the object such as Point or Integer to the ArrayList<String>, it doesn't have any problem.
